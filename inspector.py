@@ -1,5 +1,11 @@
 from bottle import get, post, request, route, run, template
 
+def checkLogin(name,password):
+    if name=='admin' and password='admin':
+        return True
+    else:
+        return False
+
 @route('/')
 
 @get('/login')
