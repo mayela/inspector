@@ -1,5 +1,4 @@
-from bottle import request, route, run, template
-from pymongo import MongoClient
+from bottle import get, post, request, route, run, template
 
 @route('/')
 
@@ -20,9 +19,7 @@ def loginSubmit():
     password = request.form.get('password')
     if checkLogin(name,password):
         return '<h1> Bienvenido </h1>'
-    else
+    else:
         return '<h1> Abrete, estas en mi barrio </h1>'
 
-
-@route('/consulta')
-
+run(host = 'localhost', port=8080)
