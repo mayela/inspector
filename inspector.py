@@ -5,22 +5,14 @@ from pymongo import MongoClient
 
 @get('/login')
 def loginform():
-    return '''<form method="POST"
-               action="/login">
-              <input type="text"
-                     name="name"/>
-              <input type="password"
-                     name="password"/>
-              <input type="submit"/> 
-              </form>''' 
-
+    return template("login.tpl")
 @post('/login')
 def loginSubmit():
     name = request.form.get('name')
     password = request.form.get('password')
     if checkLogin(name,password):
         return '<h1> Bienvenido </h1>'
-    else
+    else:
         return '<h1> Abrete, estas en mi barrio </h1>'
 
 
