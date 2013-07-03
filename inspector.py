@@ -7,8 +7,8 @@ def loginform():
     return template("login.tpl")
 @post('/login')
 def loginSubmit():
-    name = request.form.get('name')
-    password = request.form.get('password')
+    name = request.forms.get('name')
+    password = request.forms.get('password')
     if checkLogin(name,password):
         return '<h1> Bienvenido </h1>'
     else:
