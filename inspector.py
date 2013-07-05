@@ -1,10 +1,33 @@
+import pymongo
 from bottle import get, post, request, route, run, template
 
-def checkLogin(name,password):
-    if name=='admin' and password='admin':
+
+def checkLogin(name,passwd):
+    '''
+        Documentar una funcion
+        Esta funcion checara si el usuario y la contrasena son correctas 
+
+        Args:
+            name(str):Es el nombre del usuario
+            password(str):Es el password correspondiente al nombre de usuario
+
+        Returns:
+            boolean:Si 
+    '''
+    Mongo=pymongo.MongoClient("localhost",27017)
+    inspector=Mongo.inspector
+    usuarios=inspector["usuarios"]
+
+#    {"nombre":nombre,"edad":no,"email":algo@...,"pswd":md5()#}
+
+    
+    bus=usuarios.find_one({"nombre":name})
+    print type(bus)
+    print bus
+    if name==bus["nombre"] and passwd==bus["password"]:
         return True
-    else:
-        return False
+   
+    return False
 
 @route('/')
 
