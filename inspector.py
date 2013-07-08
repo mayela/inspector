@@ -16,9 +16,14 @@ Returns:
         True: Usuario y contraseña válidos
         False: Usuario y contrasela inválidos
 """
-    if name=='admin' and password=='admin':
+ 
+    Mongo=pymongo.MongoClient("localhost",27017)
+    inspector=Mongo.inspector
+    usuarios=inspector["usuarios"]
+    bus=usuarios.find_one({"nombre":name})
+    if name==bus["nombre"] and passwd==bus["password"]:
         return True
-    else:
+    else:   
         return False
 
 @route('/')
