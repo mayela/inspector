@@ -1,3 +1,7 @@
+"""Proyecto inspector
+..autores:: Maricela, Mónica
+
+"""
 import pymongo
 from bottle import get, post, request, route, run, template
 
@@ -22,6 +26,10 @@ def checkLogin(name,passwd):
     else:   
         return False
 
+@route('/')
+def hola():
+    return "hola mundo"
+
 @get('/login')
 def loginform():
     return template("login")
@@ -35,4 +43,4 @@ def loginSubmit():
     else:
         return '<h1> El usuario y contrasena no coinciden </h1>'
 
-run(host = 'localhost', port=8080,reloader=True)
+run(host = 'localhost', port=8080, reloader=True)
