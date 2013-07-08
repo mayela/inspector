@@ -1,6 +1,21 @@
+"""Proyecto inspector
+..autores:: Maricela, Mónica
+
+"""
+
 from bottle import get, post, request, route, run, template
 
 def checkLogin(name,password):
+"""Función que verifica el nombre y contraseña del usuario
+
+Args:
+    name (str): Variable que recibe el nombre
+    password (str): Variable que recibe la contraseña
+Returns:
+    boolean.Descripcion::
+        True: Usuario y contraseña válidos
+        False: Usuario y contrasela inválidos
+"""
     if name=='admin' and password=='admin':
         return True
     else:
