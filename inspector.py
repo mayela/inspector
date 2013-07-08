@@ -5,18 +5,18 @@
 import pymongo
 from bottle import get, post, request, route, run, template
 
-def checkLogin(name,passwd):
-    '''
-        Documentar una funcion
-        Esta funcion checara si el usuario y la contrasena son correctas 
+def checkLogin(name,password):
+    """Función que verifica el nombre y contraseña del usuario
 
-        Args:
-            name(str):Es el nombre del usuario
-            password(str):Es el password correspondiente al nombre de usuario
-
-        Returns:
-            boolean:Si 
-    '''
+    Args:
+        name (str): Variable que recibe el nombre
+        password (str): Variable que recibe la contraseña
+    Returns:
+        boolean.Descripcion::
+        True: Usuario y contraseña válidos
+        False: Usuario y contrasela inválidos
+"""
+ 
     Mongo=pymongo.MongoClient("localhost",27017)
     inspector=Mongo.inspector
     usuarios=inspector["usuarios"]
