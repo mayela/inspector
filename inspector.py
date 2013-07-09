@@ -1,20 +1,20 @@
 """Proyecto inspector
-..autores:: Maricela, Mónica
+..autores:: Maricela, M0nica
 
 """
 import pymongo
 from bottle import get, post, request, route, run, template
 
-def checkLogin(name,password):
-    """Función que verifica el nombre y contraseña del usuario
+def checkLogin(name,passwd):
+    """Funcion que verifica el nombre y contrasena del usuario
 
     Args:
         name (str): Variable que recibe el nombre
-        password (str): Variable que recibe la contraseña
+        password (str): Variable que recibe la contrasena
     Returns:
         boolean.Descripcion::
-        True: Usuario y contraseña válidos
-        False: Usuario y contrasela inválidos
+        True: Usuario y contrasena validos
+        False: Usuario y contrasena invalidos
 """
  
     Mongo=pymongo.MongoClient("localhost",27017)
@@ -38,9 +38,12 @@ def loginform():
 def loginSubmit():
     name = request.forms.get('name')
     password = request.forms.get('password')
-    if checkLogin(name,password):
-        return '<h1> Bienvenido </h1>'
-    else:
-        return '<h1> El usuario y contrasena no coinciden </h1>'
+    try:
+        if checkLogin(name,password):
+            return '<h1> Bienvenido </h1>'
+        else:
+            return '<h1> El usuario y contrasena no coinciden </h1>'
+    except:
+        return '<h1> El nombre de usuario ingresado no existe </h1>'
 
 run(host = 'localhost', port=8080, reloader=True)
